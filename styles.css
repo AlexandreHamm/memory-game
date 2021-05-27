@@ -1,13 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+@font-face {
+    font-family: "Harukaze";
+    src: url("./src/fonts/Harukaze.otf") format("opentype"),
+         url("./src/fonts/Harukaze.ttf") format("truetype");
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.btn-primary, img{
-    width: 100px;
-    height: 100px;
+body{
+    width: 100vw;
+    height: 100vh;
 }
+
+h1{
+    font-size: 70px;
+    position: fixed;
+    top: 5%;
+    font-family: 'Harukaze', Arial, sans-serif;
+}
+
+#resultat{
+    background-color: white;
+    padding: 0 20px;
+    border-left: 10px solid rgb(30, 30, 30);
+    border-right: 10px solid rgb(30, 30, 30);
+    height: 100vh;
+    box-shadow: 0 0 20px black;
+}
+.credits{
+    position: fixed;
+    bottom: 0;
+    font-size: 14px;
+}
+#deviantart{
+    color: rgb(112, 0, 0);
+    text-decoration: none;
+    font-weight: bold;
+}
+#background1{
+    width: 650px;
+    position: fixed;
+    top: 100px;
+    right: 55%;
+    z-index: -1;
+    opacity: 90%;
+}
+#background2{
+    width: 650px;
+    position: fixed;
+    top: 100px;
+    left: 55%;
+    z-index: -1;
+    opacity: 90%;
+}
+
+.btn-dark, #resultat img{
+    width: 100px;
+    height: 150px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px black;
+}
+.btn-dark{
+    font-family: 'Gamja Flower', cursive;
+    font-size: 20px;
+    background-image: url(./src/img/background/backgroundtuile.png);
+}
+
 #rejouer{
     display: none;
 }

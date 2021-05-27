@@ -30,7 +30,7 @@ function afficherTableau(){
         txt += "<div>";
         for(var j=0; j < tabJeu[i].length ; j++){
             if(tabJeu[i][j] === 0){
-            txt += "<button class='btn btn-primary m-2' onClick='verif(\""+i+"-"+j+"\")'>Afficher</button>";
+            txt += "<button class='btn btn-dark m-2' onClick='verif(\""+i+"-"+j+"\")'>メモリー</button>";
             } else {
                 txt += "<img src='"+getImage(tabJeu[i][j])+"' class='m-2'>"
             }
@@ -43,7 +43,7 @@ function afficherTableau(){
 function getImage(valeur){ // associe une valeur à une image
     var imgTxt = "./src/img/";
     switch(valeur){
-        case 1 : imgTxt += "elephant.png";
+        case 1 : imgTxt += "death.png";
         break;
         case 2 : imgTxt += "giraffe.png";
         break;
@@ -115,3 +115,15 @@ function genereTableauAleatoire(){
     }
     return tab;
 }
+
+function replay(){
+    if(tabJeu === tabResultat){
+        rejouerBtn.style.display = "block";
+        console.log('bravo vous avez terminé')
+    }
+    rejouerBtn.addEventListener('click', () => {
+        message.style.display = 'none';
+        document.location.reload(true); // permet de refresh la page
+    })
+}
+replay;
