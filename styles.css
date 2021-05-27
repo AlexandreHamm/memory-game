@@ -30,7 +30,7 @@ h1{
     border-left: 10px solid rgb(30, 30, 30);
     border-right: 10px solid rgb(30, 30, 30);
     height: 100vh;
-    box-shadow: 0 0 20px black;
+    box-shadow: 0 0 10px black;
 }
 .credits{
     position: fixed;
@@ -64,7 +64,7 @@ h1{
     width: 100px;
     height: 150px;
     border-radius: 5px;
-    box-shadow: 3px 3px 10px black;
+    box-shadow: 3px 3px 5px black;
 }
 .btn-dark{
     font-family: 'Gamja Flower', cursive;
