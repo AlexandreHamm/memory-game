@@ -45,19 +45,19 @@ function getImage(valeur){ // associe une valeur à une image
     switch(valeur){
         case 1 : imgTxt += "death.png";
         break;
-        case 2 : imgTxt += "giraffe.png";
+        case 2 : imgTxt += "life.png";
         break;
-        case 3 : imgTxt += "hippo.png";
+        case 3 : imgTxt += "love.png";
         break;
-        case 4 : imgTxt += "monkey.png";
+        case 4 : imgTxt += "hate.png";
         break;
-        case 5 : imgTxt += "panda.png";
+        case 5 : imgTxt += "honor.png";
         break;
-        case 6 : imgTxt += "parrot.png";
+        case 6 : imgTxt += "shame.png";
         break;
-        case 7 : imgTxt += "penguin.png";
+        case 7 : imgTxt += "war.png";
         break;
-        case 8 : imgTxt += "pig.png";
+        case 8 : imgTxt += "peace.png";
         break;
         default : console.log("cas non pris en compte")
     }
