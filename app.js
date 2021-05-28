@@ -99,7 +99,7 @@ function verif(bouton){
                 ready = true;
                 nbAffiche = 0;
                 oldSelection = [ligne, colonne];
-            },1000) // 1000 = 1 seconde
+            },500) // 1000 = 1 seconde
         } else {
             oldSelection = [ligne, colonne];
         }
@@ -126,4 +126,49 @@ function genereTableauAleatoire(){
         tab.push(ligne); // rajoute une ligne au tableau
     }
     return tab;
+}
+
+// EXPLOSION
+
+const containerSlot = document.querySelector('.slot');
+const btnConfettis = document.querySelector('.btn-confettis');
+const emojis = ['♚', '♛', '♜', '♝', '♞', '♟'];
+
+btnConfettis.addEventListener('click', fiesta);
+
+function fiesta(){
+
+    if(isTweening()) return; // si fiesta est déjà entrain de s'animer, ne peut se relancer une deuxième fois
+
+    for(let i = 0; i < 50; i++){
+        const confetti = document.createElement('div'); // createElement -> crée un élément "div"
+        confetti.innerText = emojis[Math.floor(Math.random() *emojis.length)]; // randomize un emoji
+        containerSlot.appendChild(confetti); // rajouter l'emoji randomizé au container 'Slot'
+    }
+    
+    animateConfettis();
+}
+
+// Possible de tout mettre dans une seule fonction mais les séparer augmente la visibilité
+function animateConfettis(){
+
+    const TLCONF = gsap.timeline()
+
+    TLCONF // TLCONF = Timeline Confettis = Script Cloudflare
+    .to('.slot div',{
+        y: "random(-100,100)",
+        x: "random(-100,100)", 
+        z: "random(0,1000)", //perspective
+        rotation: "random(-90,90)",
+        duration: 1
+    })
+    .to('.slot div', {autoAlpha: 0, duration: 0.3}, // autoAlpha = opacity + visibility
+    '-=0.2') // Fait disparaître les émojis, mais ne les efface pas du DOM
+    .add(() => {
+        containerSlot.innerHTML = ""; // On rappelle le contenu du container en HTML et on laisse vide pour effacer le contenu du DOM
+    });
+}
+
+function isTweening(){
+    return gsap.isTweening('.slot div'); // demande au code s'il est entrain de s'animer, qui retourne "true" ou "false" en fonction de si oui, ou non.
 }
