@@ -20,6 +20,7 @@ var tabResultat = genereTableauAleatoire(); // génère un tableau aléatoire da
 var oldSelection=[]; // permet de ne retourner les cartes qu'après la deuxième sélection si différentes
 var nbAffiche = 0; 
 var ready = true;
+var score = 0;
 
 afficherTableau();
 
@@ -83,6 +84,17 @@ function verif(bouton){
                     tabJeu[ligne][colonne] = 0;
                     tabJeu[oldSelection[0]][oldSelection[1]] = 0; //permet de réinitialiser les cartes si différentes
                 }
+                else{
+                    score++;
+                    console.log(score);
+                    if(score==8){
+                        rejouerBtn.style.display = "block";
+                        console.log('bravo vous avez terminé')
+                    }
+                    rejouerBtn.addEventListener('click', () => {
+                        document.location.reload(true); // permet de refresh la page
+                    })
+                    }
                 afficherTableau();
                 ready = true;
                 nbAffiche = 0;
@@ -115,15 +127,3 @@ function genereTableauAleatoire(){
     }
     return tab;
 }
-
-function replay(){
-    if(tabJeu === tabResultat){
-        rejouerBtn.style.display = "block";
-        console.log('bravo vous avez terminé')
-    }
-    rejouerBtn.addEventListener('click', () => {
-        message.style.display = 'none';
-        document.location.reload(true); // permet de refresh la page
-    })
-}
-replay;
