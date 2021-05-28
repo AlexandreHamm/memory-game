@@ -58,6 +58,8 @@ h1{
     left: 55%;
     z-index: -1;
     opacity: 90%;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .btn-dark, #resultat img{
