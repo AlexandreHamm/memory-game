@@ -4,6 +4,10 @@
     src: url("./src/fonts/Harukaze.otf") format("opentype"),
          url("./src/fonts/Harukaze.ttf") format("truetype");
 }
+@font-face {
+    font-family: "Korean Calligraphy";
+    src: url("./src/fonts/Korean_Calligraphy.ttf") format("truetype");
+}
 
 *{
     margin: 0;
@@ -20,8 +24,15 @@ body{
 h1{
     font-size: 70px;
     position: fixed;
-    top: 4%;
+    top: 2%;
     font-family: 'Harukaze', Arial, sans-serif;
+}
+
+h2{
+    font-size: 35px;
+    position: fixed;
+    top: 10%;
+    font-family: 'Korean Calligraphy', Arial, sans-serif;
 }
 
 #resultat{
@@ -76,7 +87,7 @@ h1{
 
 #rejouer{
     position: fixed;
-    bottom: 10%;
+    bottom: 9%;
     display: none;
     padding: 2px 15px;
     font-family: 'Gamja Flower', cursive;
@@ -105,8 +116,9 @@ h1{
     
 }
 
-#ink{
-    position: absolute;
+.ink{
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 99;
-    
 }

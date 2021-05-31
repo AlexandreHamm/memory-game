@@ -1,5 +1,7 @@
 const divResultat = document.querySelector('#resultat');
 const rejouerBtn = document.getElementById('rejouer');
+const text = document.querySelector('h2');
+let timer = 40;
 
 
 var tabJeu = [
@@ -86,10 +88,9 @@ function verif(bouton){
                 }
                 else{
                     score++;
-                    console.log(score);
                     if(score==8){
                         rejouerBtn.style.display = "block";
-                        console.log('bravo vous avez terminé')
+                        clearInterval(countdownInterval);
                     }
                     rejouerBtn.addEventListener('click', () => {
                         document.location.reload(true); // permet de refresh la page
@@ -127,6 +128,33 @@ function genereTableauAleatoire(){
     }
     return tab;
 }
+
+// TIMER
+
+function countdown(){
+    if(timer<0){
+        rejouerBtn.style.display = "block";
+        ready = false;
+    }
+    else if(timer<10){
+        text.innerText = `00:0${timer}s;`;
+        timer--;
+    }
+    else{
+        text.innerText = `00:${timer}s;`;
+        timer--;
+    }
+    rejouerBtn.addEventListener('click', () => {
+        document.location.reload(true); // permet de refresh la page
+    })
+}
+countdown();
+
+const countdownInterval = setInterval(() => { //setInterval permet de créer un interval à l'aide d'une valeur en ms (1000 = 1s)
+
+    countdown()
+
+}, 1000);
 
 // EXPLOSION
 
