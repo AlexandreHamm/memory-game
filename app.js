@@ -3,7 +3,6 @@ const rejouerBtn = document.getElementById('rejouer');
 const text = document.querySelector('h2');
 let timer = 40;
 
-
 var tabJeu = [
     [0,0,0,0],
     [0,0,0,0],
@@ -33,7 +32,7 @@ function afficherTableau(){
         txt += "<div>";
         for(var j=0; j < tabJeu[i].length ; j++){
             if(tabJeu[i][j] === 0){
-            txt += "<button class='btn btn-dark m-2' onClick='verif(\""+i+"-"+j+"\")'>メモリー</button>";
+            txt += "<button class='btn btn-dark m-2' onclick='verif(\""+i+"-"+j+"\");startTimer();'>メモリー</button>";
             } else {
                 txt += "<img src='"+getImage(tabJeu[i][j])+"' class='m-2'>"
             }
@@ -131,30 +130,33 @@ function genereTableauAleatoire(){
 
 // TIMER
 
-function countdown(){
-    if(timer<0){
-        rejouerBtn.style.display = "block";
-        ready = false;
+function startTimer(){
+    if(timer == 40){
+        function countdown(){
+            if(timer<0){
+                rejouerBtn.style.display = "block";
+                ready = false;
+            }
+            else if(timer<10){
+                text.innerText = `00:0${timer}s;`;
+                timer--;
+            }
+            else{
+                text.innerText = `00:${timer}s;`;
+                timer--;
+            }
+            rejouerBtn.addEventListener('click', () => {
+                document.location.reload(true); // permet de refresh la page
+            })
+        }
+        
+        const countdownInterval = setInterval(() => { //setInterval permet de créer un interval à l'aide d'une valeur en ms (1000 = 1s)
+        
+            countdown()
+        
+        }, 1000);
     }
-    else if(timer<10){
-        text.innerText = `00:0${timer}s;`;
-        timer--;
-    }
-    else{
-        text.innerText = `00:${timer}s;`;
-        timer--;
-    }
-    rejouerBtn.addEventListener('click', () => {
-        document.location.reload(true); // permet de refresh la page
-    })
 }
-countdown();
-
-const countdownInterval = setInterval(() => { //setInterval permet de créer un interval à l'aide d'une valeur en ms (1000 = 1s)
-
-    countdown()
-
-}, 1000);
 
 // EXPLOSION
 
