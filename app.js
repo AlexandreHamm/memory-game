@@ -2,6 +2,7 @@ const divResultat = document.querySelector('#resultat');
 const rejouerBtn = document.getElementById('rejouer');
 const text = document.querySelector('h2');
 let timer = 41;
+let countdownInterval;
 
 var tabJeu = [
     [0,0,0,0],
@@ -151,7 +152,7 @@ function startTimer(){
             })
         }
         
-        const countdownInterval = setInterval(() => { //setInterval permet de créer un interval à l'aide d'une valeur en ms (1000 = 1s)
+        countdownInterval = setInterval(() => { //setInterval permet de créer un interval à l'aide d'une valeur en ms (1000 = 1s)
         
             countdown()
         
