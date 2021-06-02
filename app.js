@@ -1,7 +1,7 @@
 const divResultat = document.querySelector('#resultat');
 const rejouerBtn = document.getElementById('rejouer');
 const text = document.querySelector('h2');
-let timer = 40;
+let timer = 41;
 
 var tabJeu = [
     [0,0,0,0],
@@ -131,7 +131,8 @@ function genereTableauAleatoire(){
 // TIMER
 
 function startTimer(){
-    if(timer == 40){
+    if(timer == 41){
+        timer--;
         function countdown(){
             if(timer<0){
                 rejouerBtn.style.display = "block";
