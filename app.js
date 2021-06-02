@@ -1,3 +1,26 @@
+// DARK MODE
+const theme = document.querySelector('.switchTheme');
+const body = document.querySelector('body')
+document.innerHTML = '';
+let toggleTheme = 0;
+
+theme.addEventListener('click', () =>{
+    if(toggleTheme === 0){
+        document.documentElement.style.setProperty('--ecriture', '#262626');
+        document.documentElement.style.setProperty('--mode', '#f1f1f1');
+        body.style.setProperty('--background', '#262626');
+        theme.innerHTML = 'Light';
+        toggleTheme++;
+    } else{
+        document.documentElement.style.setProperty('--ecriture', '#f1f1f1');
+        document.documentElement.style.setProperty('--mode', '#262626');
+        body.style.setProperty('--background', '#f1f1f1');
+        theme.innerHTML = 'Dark';
+        toggleTheme--;
+    }
+})
+//
+
 const divResultat = document.querySelector('#resultat');
 const rejouerBtn = document.getElementById('rejouer');
 const text = document.querySelector('h2');
@@ -137,6 +160,8 @@ function startTimer(){
         function countdown(){
             if(timer<0){
                 rejouerBtn.style.display = "block";
+                rejouerBtn.style.setProperty('--replay', 'url(./src/img/background/backgroundtuile.png)')
+                rejouerBtn.style.setProperty('--replayColor', 'white')
                 ready = false;
             }
             else if(timer<10){
@@ -158,49 +183,4 @@ function startTimer(){
         
         }, 1000);
     }
-}
-
-// EXPLOSION
-
-const containerSlot = document.querySelector('.slot');
-const btnConfettis = document.querySelector('.btn-confettis');
-const emojis = ['♚', '♛', '♜', '♝', '♞', '♟'];
-
-btnConfettis.addEventListener('click', fiesta);
-
-function fiesta(){
-
-    if(isTweening()) return; // si fiesta est déjà entrain de s'animer, ne peut se relancer une deuxième fois
-
-    for(let i = 0; i < 50; i++){
-        const confetti = document.createElement('div'); // createElement -> crée un élément "div"
-        confetti.innerText = emojis[Math.floor(Math.random() *emojis.length)]; // randomize un emoji
-        containerSlot.appendChild(confetti); // rajouter l'emoji randomizé au container 'Slot'
-    }
-    
-    animateConfettis();
-}
-
-// Possible de tout mettre dans une seule fonction mais les séparer augmente la visibilité
-function animateConfettis(){
-
-    const TLCONF = gsap.timeline()
-
-    TLCONF // TLCONF = Timeline Confettis = Script Cloudflare
-    .to('.slot div',{
-        y: "random(-100,100)",
-        x: "random(-100,100)", 
-        z: "random(0,1000)", //perspective
-        rotation: "random(-90,90)",
-        duration: 1
-    })
-    .to('.slot div', {autoAlpha: 0, duration: 0.3}, // autoAlpha = opacity + visibility
-    '-=0.2') // Fait disparaître les émojis, mais ne les efface pas du DOM
-    .add(() => {
-        containerSlot.innerHTML = ""; // On rappelle le contenu du container en HTML et on laisse vide pour effacer le contenu du DOM
-    });
-}
-
-function isTweening(){
-    return gsap.isTweening('.slot div'); // demande au code s'il est entrain de s'animer, qui retourne "true" ou "false" en fonction de si oui, ou non.
 }

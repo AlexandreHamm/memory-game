@@ -9,6 +9,14 @@
     src: url("./src/fonts/Korean_Calligraphy.ttf") format("truetype");
 }
 
+:root{
+    --background: #f1f1f1;
+    --ecriture: #f1f1f1;
+    --mode: #262626;
+    --replay: url(./src/img/replay.png);
+    --replayColor: black;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -19,6 +27,7 @@ body{
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    background: var(--background);
 }
 
 h1{
@@ -92,8 +101,8 @@ h2{
     padding: 2px 15px;
     font-family: 'Gamja Flower', cursive;
     font-size: 20px;
-    color: black;
-    background-image: url(./src/img/replay.png);
+    color: var(--replayColor);
+    background-image: var(--replay);
     border: none;
     border-radius: 5px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
@@ -107,8 +116,8 @@ h2{
         width: 500px;
     }
     .btn-dark, #resultat img{
-        width: 65px;
-        height: 100px;
+        width: 62px;
+        height: 98px;
     }
 }
 
@@ -116,9 +125,18 @@ h2{
     
 }
 
-.ink{
+.switchTheme{
     position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
+    bottom: 5%;
+    left: 95%;
+    cursor: pointer;
+    width: 60px;
+    height:40px;
+    background: var(--mode);
+    color: var(--ecriture);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    border-radius: 5px;
 }
